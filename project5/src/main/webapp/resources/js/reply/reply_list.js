@@ -2,20 +2,20 @@ console.log("Reply List Module.....");
 
 var replyList = (function() {
 	
-	function showList(page, bnoValue, replyUL ){
+	function showList(page, bnoValue, replyUL, pageUI){
 		
 		console.log("show list()  page: " + page);
 		
-		replyService.getList({bno:bnoValue,page: page|| 1 },
-							function(replyCnt, list)
-		 {
+		replyService.getList({bno:bnoValue,page: page|| 1 },	
+							function(replyCnt, list) {
+							
 			console.log("replyCnt: " + replyCnt);
 			console.log("list: " + list);
 			console.log(list);
 			
 			if(page == -1) {
 				pageNum = Math.ceil(replyCnt/10.0);
-				showList(pageNum, bnoValue, replyUL);
+				showList(pageNum, bnoValue, replyUL, pageUI);
 				return;
 			}
 			
@@ -34,6 +34,8 @@ var replyList = (function() {
 			 }
 			 
 			replyUL.html(str);
+			
+			showReplyPage(replyCnt, page, pageUI);
 		
 		});//end function
 	}//end showList;
@@ -50,34 +52,35 @@ var replyList = (function() {
 			endNum = Math.ceil(replyCnt / 10.0);
 		}
 		
-		if (endNum * 10 >= replyCnt) {
+		if (endNum * 10 < replyCnt) {
 			next = true;
 		}
 		
 		var str = "";
-		
+	
 		str +="<nav aria-label='Page navigation example justify-content-center'>";
 	 	str +="<ul class='pagination'>";
 		 	 
 		if(prev)
 		{
 			str +="		<li class='page-item'>";
-			str +="			<a class='page-link' href='#'>Previous</a>";
+			str +="			<a class='page-link' href='" + (startNum -1) +"'>Previous</a>";
 			str +="		</li>";
 		} 	 
     	
-    	for (var i = startNum; i =< endNum; i++)
+    	for (var i = startNum; i <= endNum; i++)
     	{
-			str +="		<li class='page-item'>";
-		 	str +="			<a class='page-link' href='#'>1</a>";
+			var active = pageNum == i ? "active" : "";
+			
+			str +="		<li class='page-item " + active + " '>";
+		 	str +="			<a class='page-link' href='" + i + "'>" + i + "</a>";
 			str +="		</li>";
 		}
 		
 		if (next) {
 			str +="	    <li class='page-item'>";
-	    	str +="			<a class='page-link' href='#'>Next</a>";
+	    	str +="			<a class='page-link' href='" + (endNum + 1) + "'>Next</a>";
 	    	str +="		</li>";
-			
 		}
 		
 	 	str +="</ul>";

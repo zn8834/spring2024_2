@@ -174,8 +174,10 @@
 			<script type="text/javascript" src="/resources/js/reply/reply_list_load.js"></script>
 
 			<script type="text/javascript" src="/resources/js/reply/reply_list_click_load.js"></script>
-				
 
+			<script type="text/javascript" src="/resources/js/reply/reply_page_click_load.js"></script>
+				
+			
 <%-- 				<%@include file="../reply/reply_ajax_test.jsp"%> --%>
 				
 				
