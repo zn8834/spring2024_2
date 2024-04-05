@@ -20,14 +20,28 @@
 // 							}
 // 	);
 	
-	//2. 댓글 입력 테스트
-	replyService.add(
-						{reply:"테스트 댓글 123", replyer:"강개토", bno:bnoValue}
-						,
-						function(result){
-							alert("RESULT: " + result);
-						}
-		);
+	//new - 1. 댓글 목록 테스트
+	replyService.getList(
+							{bno:bnoValue, page:1}
+							,
+							function(replycnt, list){
+								
+								console.log("replyCnt: " + replyCnt);
+								
+								for(var i = 0, len = list.length||0; i < len; i++ ) {
+									console.log(list[i]);
+								}
+							}
+	);
+	
+// 	//2. 댓글 입력 테스트
+// 	replyService.add(
+// 						{reply:"테스트 댓글 123", replyer:"강개토", bno:bnoValue}
+// 						,
+// 						function(result){
+// 							alert("RESULT: " + result);
+// 						}
+// 		);
 	
 // 	//3. 댓글 수정 테스트
 // 	replyService.update(
@@ -40,7 +54,7 @@
 	
 // 	//5. 댓글 삭제 테스트
 // 	replyService.remove(
-// 						10
+// 						9
 // 						,
 // 						function(count) {
 // 							console.log(count);

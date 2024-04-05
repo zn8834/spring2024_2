@@ -23,6 +23,23 @@ var replyService = (function() {
 		})
 	}
 	
+//	function getList(param, callback, error) {
+//		
+//		var bno = param.bno;
+//		var page = param.page || 1;
+//		
+//		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
+//				function(data) {
+//					if (callback) {
+//						callback(data);
+//					}
+//				}).fail(function(xhr, status, err) {
+//			if (error) {
+//				error();
+//			}
+//		});
+//	}
+
 	function getList(param, callback, error) {
 		
 		var bno = param.bno;
@@ -30,8 +47,10 @@ var replyService = (function() {
 		
 		$.getJSON("/replies/pages/" + bno + "/" + page + ".json",
 				function(data) {
+					
 					if (callback) {
-						callback(data);
+//						callback(data);// 댓글목록만 가져오는 경우
+						callback(data.replyCnt, data.list); // 댓글 숫자와 목록을 가져오는 경우
 					}
 				}).fail(function(xhr, status, err) {
 			if (error) {
@@ -65,7 +84,7 @@ var replyService = (function() {
 			type : 'put',
 			url : '/replies/' + reply.rno,
 			data : JSON.stringify(reply),
-			contentType : "application/json; charset = utf-8",
+			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
 				if (callback) {
 					callback(result);
@@ -80,19 +99,19 @@ var replyService = (function() {
 	}	
 	
 	function get(rno, callback, error) {
-		$get("/replies/" + rno + ".json", function(result){
+		$.get("/replies/" + rno + ".json", function(result){
 			
 			if(callback) {
-				callback(result);
+			   callback(result);
 			}
-		}).fail(function(xhr,status, err){
+		}).fail(function(xhr, status, err) {
 			if (error) {
 				error();
 			}
 		});
 	}
 	
-	function displyTime(timeValue) {
+	function displayTime(timeValue) {
 		var today = new Date();
 		var gap = today.getTime() - timeValue;
 		var dateObj = new Date(timeValue);
@@ -122,7 +141,7 @@ var replyService = (function() {
 		getList : getList,
 		remove : remove,
 		update : update,
-		displyTime : displyTime
+		displayTime : displayTime
 	};
 	
 })();

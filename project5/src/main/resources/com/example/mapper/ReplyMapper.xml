@@ -21,7 +21,11 @@
 	
 	<delete id="delete">
 	
-		delete from tbl_reply where rno = #{rno}
+		delete 
+				from 
+						tbl_reply 
+		where 
+				rno = #{rno}
 	
 	</delete>
 	
@@ -52,8 +56,9 @@
 	select 
 			rno, bno, reply, replyer, replyerdate, updatedate
 	from
-			(
-			select /*+INDEX(tbl_reply idx_reply) */ rownum rn, 
+		(
+			select 
+					/*+INDEX(tbl_reply idx_reply) */ rownum rn, 
 					rno, bno, reply, replyer, replyerDate, updatedate
 			from 
 					tbl_reply
@@ -61,10 +66,22 @@
 					bno = #{bno}
 				and rno > 0
 				and rownum <= #{cri.pageNum} * #{cri.amount}
-			) 
+		) 
 	where 
 			rn > (#{cri.pageNum} -1) * #{cri.amount}
 	]]>
 	
 </select>
+
+<select id="getCountByBno" resultType="int">
+<![CDATA[
+			select 
+					count(rno)
+			from
+					tbl_reply
+			where
+				bno = #{bno}
+]]>
+</select>
+
 </mapper>

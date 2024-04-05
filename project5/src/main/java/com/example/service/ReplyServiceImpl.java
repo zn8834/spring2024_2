@@ -1,16 +1,13 @@
 package com.example.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.Criteria;
+import com.example.domain.ReplyPageDTO;
 import com.example.domain.ReplyVO;
 import com.example.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Service
@@ -53,11 +50,10 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> getList(Criteria cri, Long bno) {
+	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
 		
-		log.info("get Reply List of a Board" + bno);
-		
-		return mapper.getListWithPaging(cri, bno);
+		return new ReplyPageDTO(mapper.getCountByBno(bno), 
+								mapper.getListWithPaging(cri, bno));
 	}
 
 }
