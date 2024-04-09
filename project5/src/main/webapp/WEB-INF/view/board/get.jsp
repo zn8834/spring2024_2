@@ -175,7 +175,7 @@
 
 			<script type="text/javascript" src="/resources/js/reply/reply_list_click_load.js"></script>
 
-			<script type="text/javascript" src="/resources/js/reply/reply_list_click_load.js"></script>
+			<script type="text/javascript" src="/resources/js/reply/reply_list_click_load.js"></script>//18장 47페이지
 				
 			
 <%-- 				<%@include file="../reply/reply_ajax_test.jsp"%> --%>
