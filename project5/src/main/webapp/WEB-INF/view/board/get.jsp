@@ -18,7 +18,7 @@
 
 // 			$('button').on("click", function(e) {
 // 				e.preventDefault();
-
+  
 // 				const operation = $(this).data("oper");
 
 // 				console.log(operation);
