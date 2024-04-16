@@ -35,6 +35,8 @@ $(function(){
 	
 	var replyUL = $(".chat");
 	
+	var pageUI = $(".panel-footer");
+	
 	modalRegisterBtn.on("click",function(e){
 		
 		var reply = {
@@ -50,7 +52,7 @@ $(function(){
 			modal.modal("hide");
 			
 //			showList(1);
-			replyList.showList(1, bnoValue, replyUL);
+			replyList.showList(1, bnoValue, replyUL, pageUI);
 			
 		});
 	});

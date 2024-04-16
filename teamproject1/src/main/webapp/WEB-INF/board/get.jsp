@@ -9,7 +9,7 @@
 
 <%@include file="../include/header.jsp"%>
 
-<body class="bg-gradient-primary">
+<!-- <body class="bg-gradient-primary"> -->
 
 	<script type="text/javascript">
 // 		$(function() {
