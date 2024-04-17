@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%@include file="../include/header.jsp"%>
+<%@include file="header.jsp"%>
 
 <body class="bg-gradient-primary">
 
