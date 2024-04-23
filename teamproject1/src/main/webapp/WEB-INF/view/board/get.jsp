@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/sidebar.jsp"%>
 
 <!-- <body class="bg-gradient-primary"> -->
 
@@ -163,7 +163,7 @@
 					</div>
 				<!-- ./end row -->
 			</div>
-			<%@include file="../reply/reply_modal_ui.jsp" %>
+<%-- 			<%@include file="../reply/reply_modal_ui.jsp" %> --%>
 			
 			<script type="text/javascript" src="/resources/js/reply/reply_new_btn_load.js"></script>
 				

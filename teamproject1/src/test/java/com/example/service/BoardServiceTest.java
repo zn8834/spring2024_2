@@ -1,8 +1,8 @@
 package com.example.service;
 
 import static org.junit.Assert.assertNotNull;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +22,7 @@ public class BoardServiceTest {
 	@Setter(onMethod_ = { @Autowired })
 	private BoardService service;
 	
-//	@Test 
+	@Test 
 	public void testExist() {
 		
 		log.info(service);
@@ -52,7 +52,7 @@ public class BoardServiceTest {
 	
 //	@Test
 	public void testGet() {
-		log.info(service.get(1L));
+		log.info(service.get(402L));
 	}
 	
 //	@Test

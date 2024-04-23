@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <!-- Main Content -->
 <div id="content">
-<%-- 	<%@include file="sidebar.jsp"%> --%>
+<%@include file="sidebar.jsp"%>
 
 	<div class="row">
 		<div
@@ -145,5 +145,5 @@
 	<!-- /.container-fluid -->
 
 </div>
-<%-- <%@include file="sidebar2.jsp"%> --%>
+<%@include file="sidebar2.jsp"%>
 <!-- End of Main Content -->

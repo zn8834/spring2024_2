@@ -3,11 +3,11 @@
 	pageEncoding="UTF-8"%>
 <!-- Main Content -->
 <div id="content">
-<%-- 	<%@include file="sidebar.jsp"%> --%>
-
+<%@include file="../include/sidebar.jsp"%>
+<link href="../resources/css/list.css" rel="stylesheet" type="text/css">
 	<div class="row">
-		<div
-			style="text-align: center; style =color: #F5ECCE; background-color: #F5ECCE; font-size: 50px;">자유게시판
+		<div id='title'>
+			자유게시판
 		</div>
 		<form action="/posts" method="get">
 			<select name="category" id="category">
@@ -17,56 +17,10 @@
 				<option value="카테고리3">사회</option>
 				<option value="카테고리3">이슈</option>
 			</select>
-			<button type="submit">적용</button>
+			<button type="submit" id="b1">적용</button>
 		</form>
 
-
-
-
-		<%-- 	<%@include file="sidebar2.jsp"%> --%>
-
-
-		<div class="row">
-			<div class="col-md-9">
-				<div class="table-responsive">
-					<table class="table table-bordered" width="120%" cellspacing="0">
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>제목</th>
-								<th>아이디</th>
-								<th>내용</th>
-								<th>작성일</th>
-								<th>조회</th>
-							</tr>
-						</thead>
-						<c:forEach items="${list}" var="board">
-							<tr>
-								<td><c:out value="${board.bno}" /></td>
-
-								<td><a href='/board/get?bno=<c:out value="${board.bno}"/>'>
-										<c:out value="${board.title}" />
-								</a> <a class='move' href='<c:out value="${board.bno}"/>'> <c:out
-											value="${board.title}" />
-								</a></td>
-
-								<td><c:out value="${board.writer}" /></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd"
-										value="${board.regdate}" /></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd"
-										value="${board.updateDate}" /></td>
-							</tr>
-						</c:forEach>
-					</table>
-
-					<div class="d-flex justify-content-end">
-						<a href="/board/register" class="btn btn-primary">글쓰기</a>
-						</button>
-					</div>
-				</div>
-
-
-				<div class='row'>
+		<div class='row' id='s1'>
 					<div class="col-lg-12">
 						<form id='searchForm' action="/board/list" method='get'>
 							<select name='type'>
@@ -97,6 +51,48 @@
 					</div>
 				</div>
 
+
+		<div class="row">
+			<div class="col-md-9">
+				<div class="table-responsive">
+					<table class="table table-bordered" width="120%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>제목</th>
+								<th>내용</th>
+								<th>닉네임</th>
+								<th>작성일</th>
+								<th>조회</th>
+							</tr>
+						</thead>
+						<c:forEach items="${list}" var="board">
+							<tr>
+								<td><c:out value="${board.bno}" /></td>
+
+								<td><a href='/board/get?bno=<c:out value="${board.bno}"/>'>
+										<c:out value="${board.title}" />
+								</a> <a class='move' href='<c:out value="${board.bno}"/>'> <c:out
+											value="${board.title}" />
+								</a></td>
+
+								<td><c:out value="${board.writer}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${board.regdate}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${board.updateDate}" /></td>
+							</tr>
+						</c:forEach>
+					</table>
+
+					<div class="d-flex justify-content-end">
+						<a href="/board/register" class="btn btn-primary">글쓰기</a>
+
+					</div>
+				</div>
+
+
+				
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
 
@@ -145,5 +141,5 @@
 	<!-- /.container-fluid -->
 
 </div>
-<%-- <%@include file="sidebar2.jsp"%> --%>
+<%@include file="../include/sidebar2.jsp"%>
 <!-- End of Main Content -->
