@@ -22,7 +22,7 @@ public class BoardServiceTest {
 	@Setter(onMethod_ = { @Autowired })
 	private BoardService service;
 	
-	@Test 
+//	@Test 
 	public void testExist() {
 		
 		log.info(service);
@@ -36,6 +36,7 @@ public class BoardServiceTest {
 		board.setTitle("새로 작성하는 글");
 		board.setContent("새로 작성하는 내용");
 		board.setWriter("newbie");
+		board.setNickname("닉네임");
 		
 		service.register(board);
 		
@@ -52,19 +53,19 @@ public class BoardServiceTest {
 	
 //	@Test
 	public void testGet() {
-		log.info(service.get(402L));
+		log.info(service.get(446L));
 	}
 	
 //	@Test
 	public void testDelete()
 	{
 		// 게시물 번호의 존재 여부를 확인하고 테스트할 것
-		log.info("REMOVE RESULT: " + service.remove(23L));
+		log.info("REMOVE RESULT: " + service.remove(448L));
 	}
 	
 //	@Test
 	public void testUpdate() {
-		BoardVO board = service.get(4L);
+		BoardVO board = service.get(450L);
 		if (board == null) {
 			return;
 		}

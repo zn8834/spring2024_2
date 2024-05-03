@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%@include file="../include/sidebar.jsp"%>
-
+<%@include file="../include/mainPage2.jsp"%>
+<link href="../resources/css/list.css" rel="stylesheet" type="text/css">
 <!-- <body class="bg-gradient-primary"> -->
 
 	<script type="text/javascript">
@@ -63,46 +63,38 @@
 	</script>
 	
 	<div class="container">
+		<div id="g1"><br/>
+			<div class="row">
+				<h1 class="page-header">게시글 1개 조회</h1>
+			</div><br/>
+			
+				<div class="form-group">
+					<label>Bno</label> <input class="form-control" name='bno'
+						value='<c:out value="${board.bno }"/>' readonly="readonly">
+				</div><br/>
 
-		<div class="card o-hidden border-0 shadow-lg my-5">
-			<div class="card-body p-5">
-				<!-- Nested Row within Card Body -->
-				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="page-header">게시글 1개 조회</h1>
-					</div>
-					<!-- 					/.col-lg-12 -->
-				</div>
-				<!-- 				/.row -->
+				<div class="form-group">
+					<label>Title</label> <input class="form-control" name='title'
+						value='<c:out value="${board.title }"/>' readonly="readonly">
+				</div><br/>
 
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">Board Read Page</div>
-							<!-- 							/.panel-heading -->
-							<div class="panel-body">
+				<div class="form-group">
+					<label>Text area</label>
+					<textarea class="form-control" rows="3" name='control'
+						readonly="readonly"><c:out value="${board.content}" /></textarea>
+				</div><br/>
 
-								<div class="form-group">
-									<label>Bno</label> <input class="form-control" name='bno'
-										value='<c:out value="${board.bno }"/>' readonly="readonly">
-								</div>
-
-								<div class="form-group">
-									<label>Title</label> <input class="form-control" name='title'
-										value='<c:out value="${board.title }"/>' readonly="readonly">
-								</div>
-
-								<div class="form-group">
-									<label>Text area</label>
-									<textarea class="form-control" rows="3" name='control'
-										readonly="readonly"><c:out value="${board.content}" /></textarea>
-								</div>
-
-								<div class="form-group">
-									<lable>Writer</lable>
-									<input class="form-control" name='writer'
-										value='<c:out value="${board.writer }"/>' readonly="readonly">
-								</div>
+				<div class="form-group">
+					<lable>Writer</lable>
+					<input class="form-control" name='writer'
+						value='<c:out value="${board.writer }"/>' readonly="readonly">
+				</div><br/>
+				
+				<div class="form-group">
+					<lable>Nickname</lable>
+					<input class="form-control" name='nickname'
+						value='<c:out value="${board.nickname }"/>' readonly="readonly">
+				</div><br/>
 
 								<!-- 								<button data-oper='modify' class="btn btn-default">modify</button> -->
 								<!-- 								<button data-oper='list' class="btn btn-info">List</button> -->
@@ -120,9 +112,12 @@
 <!-- 								<button type="submit" data-oper='modify' class="btn btn-default">Modify</button> -->
 <!-- 								<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button> -->
 <!-- 								<button type="submit" data-oper='list' class="btn btn-info">List</button> -->
-
-								<button data-oper='modify' class="btn btn-default">Modify</button>		
-								<button data-oper='list' class="btn btn-info">List</button>
+								<div style=" text-align: center;">
+								<button data-oper='modify' class="btn btn-default">수정</button>
+								</div>	<br/>
+								<div style=" text-align: center;">
+								<button data-oper='list' class="btn btn-info">목록</button>
+								</div>
 								
 								<form id='operForm' action="/board/modify" method="get"><!-- get방식, 수정창 띄우는 거니깐 -->
 									<input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
@@ -132,38 +127,41 @@
 					    			<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
 								</form>
 
-							</div>
-							<!-- 							end panel-body -->
-						</div>
-						<!-- 						end panel-body -->
-					</div>
-					<!-- 					end panel -->
-				</div>
-				<!-- 				/.row -->
-				
 				<p/> 
 				
-				<div class='row'>
-					<div class="col-lg-12">
-<!-- 						/.panel -->
-						<div class="panel panel-default">
+<!-- 			<div class='row' > -->
+<!-- 					<div class="col-lg-12"> -->
+<!-- 						<div class="panel panel-default"> -->
 						
-							<div class="panel-heading">
-								<i class="fa fa-comments fa-fw"></i>
-								Reply
-								<button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button>
-							</div>
+<!-- 							<div class="panel-heading"> -->
+<!-- 							<i class="fa fa-comments fa-fw"></i>Reply -->
+<!-- 							<button id='addReplyBtn' -->
+<!-- 								 class='btn btn-primary btn-xs pull-right'>New Reply</button> -->
+<!-- 							</div> -->
 							
-							<div class="panel-body">
-								<ul class="chat">
-								</ul>
-							</div>
-							<div class="panel-footer"></div>
-						</div>
+<!-- 							<div class="panel-body"> -->
+<!-- 								<ul class="chat"> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
+<!-- 							<div class="panel-footer"></div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+					
+					
+					<div style="text-align: center;" id="Reply" >
+								<button data-oper='modify' class="btn btn-default">Reply</button>
+								</div>	<br/>
+								<div style=" text-align: center;">
+								<button id='addReplyBtn' 
+								 class='btn btn-primary btn-xs pull-right'>New Reply</button>
+								</div>
+								</div>
+					
 					</div>
+				</div>
+				
 				<!-- ./end row -->
-			</div>
-<%-- 			<%@include file="../reply/reply_modal_ui.jsp" %> --%>
+			<%@include file="../reply/reply_modal_ui.jsp" %>
 			
 			<script type="text/javascript" src="/resources/js/reply/reply_new_btn_load.js"></script>
 				
@@ -181,9 +179,6 @@
 <%-- 				<%@include file="../reply/reply_ajax_test.jsp"%> --%>
 				
 				
-			</div>
-		</div>
-	</div>
 </body>
 
 </html>

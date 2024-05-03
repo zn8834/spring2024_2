@@ -1,58 +1,64 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 /* 자유게시판 (ist.jsp)에 사용한 css */
 #title {
-  border-radius: 50px;
+  border-radius: 20px;
   text-align: center;
   color: #787878; 
-  background-color: #FDF5DC; 
-  font-size: 40px;
-  width: 500px;
-  height:100px;
-  padding:20px;
-  margin:30px 500px auto;
+  background-color: #F4FFFF; 
+  font-size: 30px;
+  width: 400px;
+  height:60px;
+  padding:5px;
+  margin:30px 270px auto;
   position: relative;
-  
   font-weight: bold;
-/*   z-index:2; */
+}
+
+.btnn{
+	background-color: transparent;
+	border: 0.5px solid #000000;
+	color: #000000; 
+	border-radius: 5px;
+	transition: all 0.3s ease 0s;
+	cursor: pointer; 
 }
 
 #category {
-	border-radius: 50px 0 0 50px;
-	background-color: #FDF5E6; 
+	border-radius: 30px 0 0 30px;
+	background-color:#F4FFFF; 
 	width: 150px;
   	height:30px;
 }
 
 #b1 {
-	border-radius:0 50px 50px 0;
-	background-color: #FDF5E6; 
+	border-radius:0 20px 20px 0;
+	background-color:#F4FFFF; 
 }
 
-/* 검색창 css */
+/* 검색창 css /////////////////////*/
 #s1{
-	 margin-left:1000px;
+	 margin-left:500px;
 	 position: relative;
         
 }
 
 /* 게시글 작성(register.jsp) css */
 
-.container{
-	position: sticky;
-	top:200px;
-	margin:100px 100;
-	
-}
 #r1{
 	background-color: #F9FFFF; 
-	border-radius: 100px;
-	width: 1100px;
-	height:800px;
-
+	border-radius: 50px;
+	width: 900px;
+	height:700px;
+	position: sticky;
 	display:inline-block;
 	width: 800px;
 	justify-content: center;
+}
+.page-header{
+	font-weight: bold;
+	font-size: 20px;
+	 text-align: center;
 }
 .form-group{
 	width: 500px;
@@ -61,3 +67,34 @@
 }
 
 
+/* 게시글 1개조회(get.jsp)css */
+#g1{
+	background-color: #F9FFFF; 
+	border-radius: 50px;
+	width: 900px;
+	height:700px;
+	position: sticky;
+	display:inline-block;
+	width: 800px;
+	height:600px;
+	justify-content: center;
+
+}
+
+/* 게시물 수정 css */
+
+#m1{
+	background-color : #F9FFFF; 
+	border-radius: 50px;
+	width: 900px;
+	height:700px;
+	position: sticky;
+	display:inline-block;
+	width: 800px;
+	justify-content: center;
+}
+
+#Reply{
+	background-color :  #000000;
+	 color: #787878;  
+}

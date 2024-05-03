@@ -12,6 +12,7 @@ public class BoardVO {
 	private String content;
 	private String writer;
 	private Date regdate;
-	private Date updateDate;
-	private Long hit;
+	private Date updatedate;
+	private int hit;
+	private String nickname;
 }

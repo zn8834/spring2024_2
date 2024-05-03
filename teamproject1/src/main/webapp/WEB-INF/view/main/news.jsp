@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +39,7 @@
              
 			    <input type="hidden" id="categoryInput" name="text" value="default">
 			    
-			    <button type="button" class="btn btn-outline-warning categoryBtn" data-value="정치" style="margin-left: 300px;">
+			    <button type="button" class="btn btn-outline-warning categoryBtn" data-value="정치" style="margin-left: 30px;">
 			        <img src="/resources/svg/politics.png" alt="Bootstrap" width="20" height="20">
 			        정치
 			    </button>
@@ -62,7 +62,7 @@
       
            </div>
             
-            <hr style="border: solid 2px; width:100%; ">
+           <hr style="width:100%; ">
             		
             <div id="carouselExampleIndicators" class="carousel slide">
 			    <div class="carousel-indicators" >
@@ -77,7 +77,7 @@
 				            <svg
 				                class="d-none bd-placeholder-img bd-placeholder-img-lg d-block w-100"
 				                width="800"
-				                height="260"
+				                height="200"
 				                xmlns="http://www.w3.org/2000/svg"
 				                role="img"
 				                aria-label="Placeholder: First slide"
@@ -88,15 +88,15 @@
 				                <title></title>
 				                
 				                <div class="d-flex flex-column">
-				                	<br>
+				                
 					                <div class="d-flex justify-content-center" >
-					                <text x="50%" y="17%" fill="#555" dy=".3em" style="font-size: 30px;">
+					                <text x="50%" y="5%" fill="#555" dy=".3em" style="font-size: 30px;">
 					                    <tspan id="newsTitle" x="50%" dy="1.2em">${article.title.replaceAll("\\<.*?\\>","")}</tspan>
 					                </text>
 					                </div>
 					                <br><br><br>
 					                <div class="d-flex justify-content-center" >
-					                <text x="50%" y="50%" fill="#555" dy=".3em" style="font-size: 15px; width:70%;">
+					                <text x="50%" y="30%" fill="#555" dy=".3em" style="font-size: 15px; width:70%;">
 									    <tspan id="newsContent" x="50%" dy="1.2em">${article.description.replaceAll("\\<.*?\\>","")}</tspan>
 									</text>
 									</div>

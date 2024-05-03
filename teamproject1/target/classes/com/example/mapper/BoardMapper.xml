@@ -33,9 +33,9 @@
 	
 	<insert id="insert">
 		insert into
-					board (bno, title,content,writer)
+					board (bno, title,content,writer,nickname)
 		values
-					(seq_board.nextval, #{title}, #{content}, #{writer})
+					(seq_board.nextval, #{title}, #{content}, #{writer},#{nickname})
 	</insert>
 	
 	<insert id="insertSelectKey">
@@ -44,9 +44,9 @@
 		</selectKey>
 		
 		insert into
-					board (bno, title,content,writer)
+					board (bno, title,content,writer,nickname)
 		values
-					(#{bno}, #{title}, #{content}, #{writer})
+					(#{bno}, #{title}, #{content}, #{writer},#{nickname})
 	</insert>
 	
 	<select id="read" resultType="com.example.domain.BoardVO">
@@ -61,7 +61,7 @@
 		update
 				board 
 		set
-				title= #{title}, content= #{content}, writer = #{writer}, updateDate = sysdate, hit = #{hit} 
+				title= #{title}, content= #{content}, writer = #{writer}, updatedate = sysdate
 		where
 				bno = #{bno}
 	</update>
@@ -69,11 +69,11 @@
 	<select id="getListWithPaging" resultType="com.example.domain.BoardVO">
 	<![CDATA[
 		select 
-				bno, title, content writer, regdate, updatedate,hit
+				bno, title, content, writer, regdate, updatedate, hit, nickname
 		from (
 				select
 						/*+INDEX_DESC(board board_pk) */ rownum rn,
-						bno, title, content, writer, regdate, updatedate,hit
+						bno, title, content, writer, regdate, updatedate, hit, nickname
 				from
 						board
 				where

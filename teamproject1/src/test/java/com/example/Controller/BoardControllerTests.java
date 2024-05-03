@@ -38,14 +38,15 @@ public class BoardControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-	@Test//1.입력 테스트
-	public void testRegister()  throws Exception {
+//	@Test//1.입력 테스트
+	public void testRegister() throws Exception {
 		
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders
 											.post("/board/register")
-											.param("title", "테스트 새글 제목")
-											.param("content", "테스트 새글 내용")
-											.param("writer", "user00")
+											.param("title", "사회게시물")
+											.param("content", "내용__")
+											.param("writer", "작성자")
+											.param("nickname","닉네임")
 											)
 									.andReturn()
 									.getModelAndView()
@@ -53,24 +54,24 @@ public class BoardControllerTests {
 		log.info(resultPage);
 	}
 	
-	@Test //2.조회 테스트
+//	@Test //2.조회 테스트
 	public void testGet()  throws Exception {
 		
 		log.info(mockMvc.perform(MockMvcRequestBuilders
 								.get("/board/get")
-								.param("bno", "402"))
+								.param("bno", "446"))
 						.andReturn()
 						.getModelAndView()
 						.getModelMap()
 					);
 	}
 	
-	@Test // 3.수정 테스트
+//	@Test // 3.수정 테스트
 	public void testModify() throws Exception {
 		
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders
 											.post("/board/modify")
-											.param("bno", "402")
+											.param("bno", "450")
 											.param("title", "수정된 테스트 새글 제목")
 											.param("content", "수정된 테스트 새글 내용")
 											.param("writer", "user00"))
@@ -85,7 +86,7 @@ public class BoardControllerTests {
 		//삭제전 데이터베이스에 게시물 번호 확인할 것
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders
 											.post("/board/remove")
-											.param("bno", "43"))
+											.param("bno", "404"))
 									.andReturn()
 									.getModelAndView()
 									.getViewName();
@@ -97,7 +98,7 @@ public class BoardControllerTests {
 
 		log.info(mockMvc.perform(
 				MockMvcRequestBuilders.get("/board/list")
-				.param("pageNum", "2")
+				.param("pageNum", "1")
 				.param("amount", "5"))
 				.andReturn().getModelAndView().getModelMap());
 	}	

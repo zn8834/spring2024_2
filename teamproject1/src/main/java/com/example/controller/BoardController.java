@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,13 +31,6 @@ public class BoardController {
 		
 	}
 	
-//	@GetMapping("/list") // 1.목록조회
-//	public void list(Model model) {
-//		log.info("list");
-//		model.addAttribute("list", service.getList());
-//	}
-	
-	
 	@GetMapping("/list") 
 	public void list(Criteria cri, Model model) {
 		
@@ -53,6 +44,7 @@ public class BoardController {
 		
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
+
 
 	@PostMapping("/register") // 2.입력
 	public String register(BoardVO board, RedirectAttributes rttr) {
@@ -77,12 +69,6 @@ public class BoardController {
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
-		
-//		rttr.addAttribute("pageNum", cri.getPageNum());
-//		rttr.addAttribute("amount", cri.getAmount());
-//		
-//		rttr.addAttribute("type", cri.getType());
-//		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/board/list" + cri.getListLink();
 	}
