@@ -26,81 +26,85 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class ReplyController {
 	
-	@GetMapping("/register") 
-	public String register() {
-		return "redirect:/board/list";
+	private ReplyService service;
+	
+//	// 댓글 작성
+//	@RequestMapping(value = "/new", method = RequestMethod.POST)
+//	public String register(ReplyVO vo) throws Exception {
+//	    
+//		service.register(vo);
+//	    
+//	    return "redirect:/board/get?bno=" + vo.getBno();
+//	}
+	
+	@PostMapping(value = "/new", consumes = "application/json",
+								 produces = { MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> create(@RequestBody ReplyVO vo) {
+		
+		log.info("ReplyVO : " + vo);
+		
+		int insertCount = service.register(vo);
+		
+		log.info("Reply INSERT COUNT: " + insertCount);
+		
+		return insertCount == 1 
+			? new ResponseEntity<>("success", HttpStatus.OK)
+			: new  ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@GetMapping(value = "/{rno}",
+				produces = { MediaType.APPLICATION_XML_VALUE,
+							 MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ReplyVO> get(@PathVariable("rno") Long rno) {
+		
+		log.info("get:" + rno);
+		
+		return new ResponseEntity<>(service.get(rno), HttpStatus.OK);
 	}
 	
-//	private ReplyService service;
-//	
-//	@PostMapping(value = "/new", consumes = "application/json",
-//								 produces = { MediaType.TEXT_PLAIN_VALUE })
-//	public ResponseEntity<String> create(@RequestBody ReplyVO vo) {
-//		
-//		log.info("ReplyVO : " + vo);
-//		
-//		int insertCount = service.register(vo);
-//		
-//		log.info("Reply INSERT COUNT: " + insertCount);
-//		
-//		return insertCount == 1 
-//			? new ResponseEntity<>("success", HttpStatus.OK)
-//			: new  ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
-//
-//	@GetMapping(value = "/{rno}",
-//				produces = { MediaType.APPLICATION_XML_VALUE,
-//							 MediaType.APPLICATION_JSON_VALUE })
-//	public ResponseEntity<ReplyVO> get(@PathVariable("rno") Long rno) {
-//		
-//		log.info("get:" + rno);
-//		
-//		return new ResponseEntity<>(service.get(rno), HttpStatus.OK);
-//	}
-//	
-//	@RequestMapping(method = { RequestMethod.PUT,
-//							   RequestMethod.PATCH },
-//					value = "/{rno}",
-//					consumes = "application/json",
-//					produces = { MediaType.TEXT_PLAIN_VALUE})
-//	
-//	public ResponseEntity<String> modify(
-//					@RequestBody ReplyVO vo,
-//					@PathVariable("rno")Long rno) {
-//				vo.setRno(rno);
-//				
-//		log.info("rno:" + rno);
-//		log.info("modify:" + vo);
-//		
-//		return service.modify(vo) == 1
-//				? new ResponseEntity<>("success", HttpStatus.OK)
-//				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
-//	
-//	@DeleteMapping(value = "/{rno}",
-//				   produces = { MediaType.APPLICATION_XML_VALUE })
-//	
-//	public ResponseEntity<String> remove(@PathVariable("rno") Long rno) {
-//		
-//		log.info("remove:" + rno);
-//		
-//		return service.remove(rno) == 1
-//				? new ResponseEntity<>("success", HttpStatus.OK)
-//				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
-//	
-//	@GetMapping(value = "/pages/{bno}/{page}",
-//				produces = { MediaType.APPLICATION_XML_VALUE,
-//							 MediaType.APPLICATION_JSON_VALUE })
-//	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page,
-//												@PathVariable("bno") Long bno)
-//	{
-//		Criteria cri = new Criteria(page,10);
-//		
-//		log.info("get Reply List bno: " + bno);
-//		
-//		log.info("cri:" + cri);
-//		
-//		return new ResponseEntity<>(service.getListPage(cri, bno), HttpStatus.OK);
-//	}	
+	@RequestMapping(method = { RequestMethod.PUT,
+							   RequestMethod.PATCH },
+					value = "/{rno}",
+					consumes = "application/json",
+					produces = { MediaType.TEXT_PLAIN_VALUE})
+	
+	public ResponseEntity<String> modify(
+					@RequestBody ReplyVO vo,
+					@PathVariable("rno")Long rno) {
+				vo.setRno(rno);
+				
+		log.info("rno:" + rno);
+		log.info("modify:" + vo);
+		
+		return service.modify(vo) == 1
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@DeleteMapping(value = "/{rno}",
+				   produces = { MediaType.APPLICATION_XML_VALUE })
+	
+	public ResponseEntity<String> remove(@PathVariable("rno") Long rno) {
+		
+		log.info("remove:" + rno);
+		
+		return service.remove(rno) == 1
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@GetMapping(value = "/pages/{bno}/{page}",
+				produces = { MediaType.APPLICATION_XML_VALUE,
+							 MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page,
+												@PathVariable("bno") Long bno)
+	{
+		Criteria cri = new Criteria(page,10);
+		
+		log.info("get Reply List bno: " + bno);
+		
+		log.info("cri:" + cri);
+		
+		return new ResponseEntity<>(service.getListPage(cri, bno), HttpStatus.OK);
+	}	
 }

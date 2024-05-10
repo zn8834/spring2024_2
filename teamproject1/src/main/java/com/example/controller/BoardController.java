@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.BoardVO;
@@ -44,7 +48,25 @@ public class BoardController {
 		
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
-
+//댓글
+	@RequestMapping(value="/board/addComment.do")
+    @ResponseBody
+    public String ajax_addComment(@ModelAttribute("boardVO") BoardVO boardVO, HttpServletRequest request) throws Exception{
+        
+        HttpSession session = request.getSession();
+//        LoginVO loginVO = (LoginVO)session.getAttribute("loginVO");
+        
+//        try{
+//        
+//            boardVO.setWriter(loginVO.getUser_id());        
+//            boardServiceImpl.addComment(boardVO);
+//            
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+        
+        return "success";
+    }
 
 	@PostMapping("/register") // 2.입력
 	public String register(BoardVO board, RedirectAttributes rttr) {
@@ -91,5 +113,5 @@ public class BoardController {
 		
 		return "redirect:/board/list" + cri.getListLink();
 	}
-	
+
 }

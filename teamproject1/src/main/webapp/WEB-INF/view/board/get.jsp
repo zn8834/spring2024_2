@@ -3,41 +3,16 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
-<%@include file="../include/mainPage2.jsp"%>
-<link href="../resources/css/list.css" rel="stylesheet" type="text/css">
+<%@ include file="../include/topsidebar.jsp"  %>
+<link href="/resources/css/list.css" rel="stylesheet" type="text/css">
 <!-- <body class="bg-gradient-primary"> -->
 
 	<script type="text/javascript">
-// 		$(function() {
-//
-// 			let formObj = $("#operForm"); //id 라서 #을 붙인다. role아님!
 
-// 			$('button').on("click", function(e) {
-// 				e.preventDefault();
-  
-// 				const operation = $(this).data("oper");
-
-// 				console.log(operation);
-
-// 				if (operation === 'remove') 
-// 				{
-// 					formObj.attr("action", "/board/remove");
-// 				}
-// 				else if (operation === 'list') 
-// 				{
-// // 					self.location = "/board/list";
-// 					formObj.attr("action","/board/list").attr("method", "get");
-// 					formObj.empty();
-// 				}
-
-// 				formObj.submit();
-// 			});
-// 		});
-	
 		$(function(){
 			
 			var operForm = $("#operForm");
@@ -53,17 +28,11 @@
 				operForm.attr("action", "/board/list")
 				operForm.submit();
 			});
-			
-// 			var bnoValue = $("#operForm").find("#bno").val();
-// 			var replyUL = $(".chat");
-			
-// 			replyList.showList(1, bnoValue, replyUL);
-			
 		});
 	</script>
-	
+	<br/><br/><br/><br/>
 	<div class="container">
-		<div id="g1"><br/>
+		<div id="g1">
 			<div class="row">
 				<h1 class="page-header">게시글 1개 조회</h1>
 			</div><br/>
@@ -112,56 +81,68 @@
 <!-- 								<button type="submit" data-oper='modify' class="btn btn-default">Modify</button> -->
 <!-- 								<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button> -->
 <!-- 								<button type="submit" data-oper='list' class="btn btn-info">List</button> -->
-								<div style=" text-align: center;">
-								<button data-oper='modify' class="btn btn-default">수정</button>
-								</div>	<br/>
-								<div style=" text-align: center;">
-								<button data-oper='list' class="btn btn-info">목록</button>
-								</div>
-								
-								<form id='operForm' action="/board/modify" method="get"><!-- get방식, 수정창 띄우는 거니깐 -->
-									<input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
-									<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}" />'>
-<%-- 									<inputc type='hidden' name='amount' value='<c:out value="${cri.amount}" />'> --%>
-					    			<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
-					    			<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
-								</form>
-
-				<p/> 
-				
-<!-- 			<div class='row' > -->
-<!-- 					<div class="col-lg-12"> -->
-<!-- 						<div class="panel panel-default"> -->
-						
-<!-- 							<div class="panel-heading"> -->
-<!-- 							<i class="fa fa-comments fa-fw"></i>Reply -->
-<!-- 							<button id='addReplyBtn' -->
-<!-- 								 class='btn btn-primary btn-xs pull-right'>New Reply</button> -->
-<!-- 							</div> -->
-							
-<!-- 							<div class="panel-body"> -->
-<!-- 								<ul class="chat"> -->
-<!-- 								</ul> -->
-<!-- 							</div> -->
-<!-- 							<div class="panel-footer"></div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-					
-					
-					<div style="text-align: center;" id="Reply" >
-								<button data-oper='modify' class="btn btn-default">Reply</button>
-								</div>	<br/>
-								<div style=" text-align: center;">
-								<button id='addReplyBtn' 
-								 class='btn btn-primary btn-xs pull-right'>New Reply</button>
-								</div>
-								</div>
-					
-					</div>
+				<div style=" text-align: center;">
+				<button data-oper='modify' class="btn btn-dark mt-3">수정</button>
+				</div>
+				<div style=" text-align: center;">
+				<button data-oper='list' class="btn btn-dark mt-4">목록</button><br/><br/>
 				</div>
 				
+				<form id='operForm' action="/board/modify" method="get"><!-- get방식, 수정창 띄우는 거니깐 -->
+					<input type='hidden' id='bno' name='bno' value='<c:out value="${board.bno}"/>'>
+					<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}" />'>
+	    			<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+	    			<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+				</form>
+
+				<p/> <br/><br/>
+				
+				
+			<!-- 댓글조회	 -->
+				<div class="card mb-2">
+					<div class="card-header bg-light">
+			        	<i class="fa fa-comment fa"></i> 댓글목록
+					</div>
+					<div class="card-body-2">
+						<ul class="list-group list-group-flush"></ul>
+					    	<li class="list-group-item">
+					 		<ul class="chat"></ul>
+					 		<div class="panel-footer"></div>
+	  				 </div>
+	  				 
+	  				 
+   			 <!-- 댓글작성	 -->
+					<div class="card mb-2">
+						<form method="post" action="/replies/new">
+	   						<div class="card-header bg-light">
+				        		<i class="fa fa-comment fa"></i> 댓글쓰기
+							</div>
+					        <p><br/>
+					           	<label>닉네임: </label> <input type="text" name="nickname">
+					        </p>
+					        <p>
+					            <label>내용 : </label><textarea rows="5" cols="50" name="reply"></textarea>
+					        </p>
+					        <p>
+					        	<input type="hidden" name="bno" value="${get.bno}">
+					        </p>
+					         
+<!-- 							<button type="button" class="btn btn-dark mt-3" onClick="javascript:addReplyBtn();">post reply</button> -->
+						<button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button>
+							</form>
+					</div>
+					
+				
+		
+		</div>
+	</div>		
+							
+					
+				
+				
 				<!-- ./end row -->
-			<%@include file="../reply/reply_modal_ui.jsp" %>
+<%-- 			<%@include file="../reply/reply_modal_ui.jsp" %> --%>
+<%-- 			<%@include file="../reply/reply.jsp"%> --%>
 			
 			<script type="text/javascript" src="/resources/js/reply/reply_new_btn_load.js"></script>
 				
@@ -176,9 +157,6 @@
 			<script type="text/javascript" src="/resources/js/reply/reply_page_click_load.js"></script>
 				
 			
-<%-- 				<%@include file="../reply/reply_ajax_test.jsp"%> --%>
-				
-				
-</body>
-
+				<%@include file="../reply/reply_ajax_test.jsp"%>
+			
 </html>

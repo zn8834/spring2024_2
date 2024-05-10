@@ -9,20 +9,20 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">&times;</button>
-				<h4 class="madal-title" id="myModalLable">REPLY MODAL</h4>
+				<h4 class="madal-title" id="myModalLable">댓글쓰기</h4>
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<label>Relpy</label> 
+					<label>제목</label> 
 					<input class="form-control" name='reply' value='New Reply!'>
 				</div>
 				<div class="form-group">
-					<label>Replyer</label> 
+					<label>작성자</label> 
 					<input class="form-control" name='replyer' value='replyer'>
 				</div>
 				<div class="form-group">
-					<label>Relpyer Date</label>
-					<input class="form-control" name='replyerDate' value='2024-03-27 04:04'>
+					<label>작성일</label>
+					<input class="form-control" name='replyDate' value='2024-03-27 04:04'>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -36,4 +36,5 @@
 	</div>
 	<!--/.modal-dialog -->
 </div>
+
 <!-- /.modal -->

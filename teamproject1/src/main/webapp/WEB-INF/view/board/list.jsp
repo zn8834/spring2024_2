@@ -4,9 +4,9 @@
 
 <!DOCTYPE html>
 <html>
-
-<div id="content">
 <link href="/resources/css/list.css" rel="stylesheet" type="text/css">
+<%@ include file="../include/topsidebar.jsp"  %>
+<div class="content_main mx-5">
 
 <%@include file="../include/content.jsp"%>
  <%@include file="../include/modal.jsp"%>

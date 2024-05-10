@@ -2,14 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- Main Content -->
-<div id="content">
-<%@include file="../include/mainPage2.jsp"%>
+<div>
+
 <link href="/resources/css/list.css" rel="stylesheet" type="text/css">
 	<div class="row">
 		<div id='title'>
 			자유게시판
 		</div>
-		<form action="/posts" method="get">
+		<form action="/posts" method="get"><br/>
 			<select name="category" id="category">
 				<option value="">게시판 카테고리</option>
 				<option value="카테고리1">정치</option>
@@ -19,7 +19,7 @@
 			</select>
 			<button type="submit" id="b1">적용</button>
 		</form>
-
+		
 		<div class='row' id='s1'>
 					<div class="col-lg-12">
 						<form id='searchForm' action="/board/list" method='get'>
@@ -47,13 +47,13 @@
 								type='hidden' name='amount'
 								value='<c:out value="${pageMaker.cri.amount}"/>' />
 							<button class='btn btn-default'>Search</button>
-						</form>
+						</form><br/>
 					</div>
 				</div>
 
 
-		<div class="row">
-			<div class="col-md-9">
+		<div class="row" id="content">
+			<div class="col-md-11">
 				<div class="table-responsive">
 <!-- 					<table class="table table-bordered" width="120%" cellspacing="0"> -->
 						<table class="table table-hover" width="120%" cellspacing="0">
@@ -94,7 +94,18 @@
 					<div class="d-flex justify-content-end">
 						<a href="list" class="btnn">전체글보기</a>
 					</div>
-					
+					<script>
+					//글조회
+					function fn_view(code){
+					    
+					    var form = document.getElementById("boardForm");
+					    var url = "<c:url value='/board/hit.do'/>";
+					    url = url + "?hit=" + code;
+					    
+					    form.action = url;    
+					    form.submit(); 
+					}
+					</script>
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
 

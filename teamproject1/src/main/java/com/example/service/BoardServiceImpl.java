@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import com.example.domain.BoardVO;
@@ -62,5 +64,18 @@ public class BoardServiceImpl implements BoardService {
 		
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
+	}
+//	조회수
+	@Override
+	public void hit(int bno, HttpSession session) throws Exception{
+		long update_time = 0;
+		if(session.getAttribute("update_time_" + bno) != null) {
+			update_time = (long)session.getAttribute("update_time_" + bno);
+		}
+		
+		long current_time = System.currentTimeMillis();
+		if(current_time - update_time > 5*1000) {
+			session.setAttribute("update_time_" + bno, current_time);
+		}
 	}
 }

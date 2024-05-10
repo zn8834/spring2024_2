@@ -99,7 +99,7 @@
 <!-- 		</trim> -->
 		
 	<![CDATA[		
-						rownum <= #{pageNum} * #{amount}
+				rownum <= #{pageNum} * #{amount}
 			)
 		where
 				rn > (#{pageNum} -1) * #{amount}
@@ -132,4 +132,12 @@
 		bno > 0		
 	</select>
 	
+	<update id="boardHit" parameterType="int">
+		update 
+				board 
+		set 
+				hit = hit + 1
+		where 
+				bno = #{bno}		
+	</update>
 </mapper>

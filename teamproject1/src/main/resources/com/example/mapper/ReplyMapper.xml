@@ -6,6 +6,7 @@
 	
 <mapper namespace="com.example.mapper.ReplyMapper">
 
+<!-- 댓글입력 -->
 	<insert id="insert">
 	
 		insert into reply (rno, bno, reply, replyer,nickname)
@@ -13,12 +14,14 @@
 		
 	</insert>
 
+<!-- 댓글조회 -->
 	<select id="read" resultType="com.example.domain.ReplyVO">
 	
 		select * from reply where rno = #{rno}
 	
 	</select>
 	
+<!-- 댓글삭제 -->
 	<delete id="delete">
 	
 		delete 
@@ -29,6 +32,7 @@
 	
 	</delete>
 	
+<!-- 	댓글수정 -->
 	<update id="update">
 	
 		update 

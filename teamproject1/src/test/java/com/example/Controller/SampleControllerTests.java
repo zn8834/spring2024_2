@@ -41,6 +41,7 @@ public class SampleControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
+<<<<<<< HEAD
 	@Test
 	public void testConvert() throws Exception {
 		
@@ -59,4 +60,24 @@ public class SampleControllerTests {
 				.content(jsonStr))
 				.andExpect(status().is(200));
 	}
+=======
+////	@Test
+//	public void testConvert() throws Exception {
+//		
+//		Ticket ticket = new Ticket();
+//		ticket.setTno(123);
+//		ticket.setOwner("Admin");
+//		ticket.setGrade("AAA");
+//		
+//		//GSON 라이브러리를 이용해서  JSON 데이터로 변환
+//		String jsonStr = new Gson().toJson(ticket);
+//		
+//		log.info(jsonStr);
+//		
+//		mockMvc.perform(post("/sample/ticket")
+//				.contentType(MediaType.APPLICATION_JSON)
+//				.content(jsonStr))
+//				.andExpect(status().is(200));
+//	}
+>>>>>>> refs/remotes/origin/master
 }

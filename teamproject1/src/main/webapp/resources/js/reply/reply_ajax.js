@@ -130,7 +130,7 @@ var replyService = (function() {
 			var mm = dateObj.getMonth() + 1; //getMonth() is zero-based
 			var dd = dateObj.getDate();
 			
-			return [ yy, '/', (mm > 9 ? '' : '0') + mm, '/',
+			return [ yy, '-', (mm > 9 ? '' : '0') + mm, '-',
 					(dd > 9 ? '' : '0') + dd ].join('');
 		}
 	};
