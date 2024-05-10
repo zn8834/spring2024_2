@@ -29,14 +29,19 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
                                                                                 
         
+=======
+                                                                
+>>>>>>> refs/remotes/origin/master
         
         
         
         
         
         
+<<<<<<< HEAD
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                                                                                 
@@ -56,8 +61,13 @@
         
         
         
+=======
+>>>>>>> refs/remotes/origin/master
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+<<<<<<< HEAD
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+=======
+>>>>>>> refs/remotes/origin/master
                                                                                 
         
         
