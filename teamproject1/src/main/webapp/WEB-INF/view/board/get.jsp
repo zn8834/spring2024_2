@@ -17,7 +17,7 @@
 <body class="bg-gradient-primary">
 >>>>>>> refs/remotes/origin/master
 
-	<script type="text/javascript">
+	<script type="text/javascript">커밋
 
 		$(function(){
 			
